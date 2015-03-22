@@ -1,0 +1,20 @@
+- name: Ensure user jenkins is present
+  user: name=jenkins comment="Jenkins user" uid=1000 home=/var/jenkins_home
+
+- name: Ensure /usr/share/jenkins/ref/init.groovy.d exists
+  file: path=/usr/share/jenkins/ref/init.groovy.d state=directory
+
+- name: Ensure tcp-slave-angent-port is configured
+  copy: src=init.groovy dest=/usr/share/jenkins/ref/init.groovy.d/tcp-slave-angent-port.groovy
+
+- name: Ensure jenkins war is installed
+  get_url: url=http://mirrors.jenkins-ci.org/war-stable/{{ jenkins_version }}/jenkins.war dest=/usr/share/jenkins/jenkins.war mode=0664
+
+- name: Ensure jenkins sh files are installed
+  copy: src={{ item }} dest=/usr/local/bin/{{ item }} mode=0755
+  with_items:
+  - jenkins.sh
+  - plugins.sh
+
+- name: Ensure jenkins files are owned by jenkins
+  shell: chown -R jenkins /var/jenkins_home /usr/share/jenkins/ref
