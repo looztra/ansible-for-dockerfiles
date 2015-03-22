@@ -1,0 +1,5 @@
+- name: Ensure /opt/docker directory exists
+  file: path=/opt/docker state=directory
+
+- name: install docker binary
+  get_url: url=https://get.docker.com/builds/Linux/x86_64/docker-latest dest=/opt/docker/docker mode=0755
