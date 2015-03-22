@@ -1,0 +1,20 @@
+- name: Prepare /opt directory
+  file: path=/opt state=directory
+
+- name: Download oracle jdk8 {{ oracle_jdk8_version }}
+  shell: 'wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/{{ oracle_jdk8_build_version }}/jdk-{{ oracle_jdk8_short_version }}-linux-x64.tar.gz"'
+  args:
+    chdir: /tmp
+
+- name: Install oracle jdk8 to /opt
+  unarchive: src=/tmp/jdk-{{ oracle_jdk8_short_version }}-linux-x64.tar.gz dest=/opt copy=no
+
+- name: Remove jdk8 tgz
+  file: path=/tmp/jdk-{{ oracle_jdk8_short_version }}-linux-x64.tar.gz state=absent
+
+- name: Declare java binaries
+  shell: "{{ item }}"
+  with_items:
+  - "alternatives --install /usr/bin/java java /opt/jdk{{ oracle_jdk8_version }}/bin/java 2"
+  - "alternatives --install /usr/bin/javac javac /opt/jdk{{ oracle_jdk8_version }}/bin/javac 2"
+  - "alternatives --install /usr/bin/jar jar /opt/jdk{{ oracle_jdk8_version }}/bin/jar 2"
