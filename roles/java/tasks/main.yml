@@ -1,3 +1,4 @@
 - include: jdk6.yml tags=jdk6
 - include: jdk7.yml tags=jdk7
-- include: oracle-jdk8.yml tags=oracle-jdk8
+- include: jdk8.yml tags=jdk8
+#- include: oracle-jdk8.yml tags=oracle-jdk8

@@ -1,6 +1,4 @@
 ---
-openjdk7_version: 1.7.0.71
-openjdk6_version: 1.6.0.33
 oracle_jdk8_short_version: 8u40
 oracle_jdk8_build_version: 8u40-b25
 oracle_jdk8_version: 1.8.0_40

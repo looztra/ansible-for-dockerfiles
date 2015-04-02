@@ -1,0 +1,2 @@
+- name: Ensure jdk 8 is installed
+  yum: name="java-1.8.0-openjdk-devel"
