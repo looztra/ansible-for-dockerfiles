@@ -1,21 +1,21 @@
-- ensure mandatory slave packages are installed
+- name: ensure mandatory slave packages are installed
   yum: name={{ item }} state=installed
   with_items:
   - openssh-server
   - java-1.8.0-openjdk
   - supervisor
 
-- ensure jenkins use exist with a password
+- name: ensure jenkins use exist with a password
   user: name=jenkins comment="Jenkins user" uid=1000 home=/var/jenkins_home password=jenkins
 
-- create ssh key for the jenkins user
+- name: create ssh key for the jenkins user
   shell: ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 
-- adjust pam config for sshd
+- name: adjust pam config for sshd
   shell: sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd 
 
-- ensure /var/run/supervisord exist
+- name: ensure /var/run/supervisord exist
   file: path=/var/run/supervisord  state=directory
 
-- ensure supervisord.conf is installed
+- name: ensure supervisord.conf is installed
   copy: src=supervisord.conf dest=etc/supervisord.conf
