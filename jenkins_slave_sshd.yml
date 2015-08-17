@@ -2,12 +2,11 @@
   roles:
   - { role: common, tags: common }
   - { role: sshd4slave, tags: sshd4slave }
-  #- { role: java, tags: java }
-  #- { role: docker, tags: docker }
-  #- { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.3.1, maven_default: True, tags: maven_3.3.1 }
-  #- { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.2.5, maven_default: True, tags: maven_3.2.5 }
-  #- { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.1.1, tags: maven_3.1.1 }
-  #- { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.0.5, tags: maven_3.0.5 }
-  #- { role: scm, tags: scm }
-  #- { role: nodejs, tags: nodejs }
-  
+  - { role: java, tags: java }
+  - { role: docker, tags: docker }
+  - { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.3.3, maven_default: True, tags: maven_3.3 }
+  - { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.2.5, maven_default: True, tags: maven_3.2 }
+  - { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.1.1, tags: maven_3.1 }
+  - { role: maven, local_ansible_data_path: '/tmp/ansible', maven_version: 3.0.5, tags: maven_3.0 }
+  - { role: scm, tags: scm }
+  - { role: nodejs, tags: nodejs }
