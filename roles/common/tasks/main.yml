@@ -1,3 +1,6 @@
+- name: update all packages
+  yum: name=* state=latest
+
 - name: ensure Epel is installed
   yum: name=epel-release
 
@@ -7,9 +10,7 @@
   - unzip
   - tar
   - wget
-
-- name: ensure /var/lib/exported exists
-  file: path=/var/lib/exported state=directory
+  - curl
 
 - name: ensure user jenkins is present
   user: name=jenkins comment="Jenkins user" uid=1000 home=/var/jenkins_home
