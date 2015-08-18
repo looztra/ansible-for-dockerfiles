@@ -6,7 +6,7 @@
   - supervisor
 
 - name: ensure jenkins use exist with a password
-  user: name=jenkins comment="Jenkins user" uid=1000 home=/var/jenkins_home password=jenkins
+  user: name=jenkins comment="Jenkins user" uid=1000 home=/var/jenkins_home password=jenkins state=present update_password=always
 
 - name: create ssh key for the jenkins user
   shell: ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
